@@ -55,7 +55,7 @@ function checkEmail(event) {
     formStatus.email = false;
   } else {
     fetch(
-      "/hw1/APIs/check_email.php?q=" +
+      "/hw2/public/check-email/" +
         encodeURIComponent(String(emailInput.value).toLowerCase())
     )
       .then(fetchResponse)

@@ -83,11 +83,11 @@ function appendDropdownCards(array, container) {
     for (let i = 0; i < array.length; i++) {
         const item = array[i];
         const card = document.createElement("a");
-        card.className = "dropdown-card";
+        card.classList.add("dropdown-card");
         card.href = item.href;
 
         const backgroundDiv = document.createElement("div");
-        backgroundDiv.className = "dropdown-card-background";
+        backgroundDiv.classList.add("dropdown-card-background");
 
         const img = document.createElement("img");
         img.src = item.image;
@@ -95,7 +95,7 @@ function appendDropdownCards(array, container) {
         backgroundDiv.appendChild(img);
 
         const titleDiv = document.createElement("div");
-        titleDiv.className = "dropdown-card-title";
+        titleDiv.classList.add("dropdown-card-title");
         titleDiv.textContent = item.title;
 
         card.appendChild(backgroundDiv);
@@ -109,7 +109,7 @@ function appendDropdownContent(array, container) {
     for (let i = 0; i < array.length; i++) {
         const item = array[i];
         const dropdownItem = document.createElement("a");
-        dropdownItem.className = "dropdown-item";
+        dropdownItem.classList.add("dropdown-item");
         dropdownItem.href = item.href;
         dropdownItem.textContent = item.title;
 
@@ -127,12 +127,12 @@ function onSearchJson(data) {
     for (let i = 0; i < data.docs.length; i++) {
         const book = data.docs[i];
         const bookDiv = document.createElement("div");
-        bookDiv.className = "search-result-item";
+        bookDiv.classList.add("search-result-item");
 
         let cover;
         if (book.cover_i) {
             cover = document.createElement("img");
-            cover.className = "search-result-cover";
+            cover.classList.add("search-result-cover");
             cover.src =
                 "https://covers.openlibrary.org/b/id/" +
                 book.cover_i +
@@ -140,12 +140,12 @@ function onSearchJson(data) {
             cover.alt = "cover";
         } else {
             cover = document.createElement("div");
-            cover.className = "search-result-cover";
+            cover.classList.add("search-result-cover");
         }
         bookDiv.appendChild(cover);
 
         const titleDiv = document.createElement("div");
-        titleDiv.className = "search-result-title";
+        titleDiv.classList.add("search-result-title");
         titleDiv.textContent = book.title;
         bookDiv.appendChild(titleDiv);
 

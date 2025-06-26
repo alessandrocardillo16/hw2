@@ -14,34 +14,40 @@ function createCards(data) {
     for (let index = 0; index < data.length; index++) {
         const cardData = data[index];
         const cardElement = document.createElement("a");
-        cardElement.className =
-            index === 0
-                ? "home-card home-card-a"
-                : `home-card home-card-secondary home-card-${String.fromCharCode(
-                      98 + index - 1
-                  )}`;
+        if (index === 0) {
+            cardElement.classList.add("home-card", "home-card-a");
+        } else {
+            cardElement.classList.add(
+                "home-card",
+                "home-card-secondary",
+                `home-card-${String.fromCharCode(98 + index - 1)}`
+            );
+        }
         cardElement.href = cardData.href;
         const imgElement = document.createElement("img");
-        imgElement.className = "home-card-background";
+        imgElement.classList.add("home-card-background");
         imgElement.src = cardData.img_src;
         imgElement.alt = cardData.title;
         cardElement.appendChild(imgElement);
 
         if (index === 0) {
             const titleElement = document.createElement("h1");
-            titleElement.className = "home-card-title";
+            titleElement.classList.add("home-card-title");
             titleElement.textContent = cardData.title;
 
             const buttonElement = document.createElement("div");
-            buttonElement.className =
-                "contained-button contained-button-red home-card-button";
+            buttonElement.classList.add(
+                "contained-button",
+                "contained-button-red",
+                "home-card-button"
+            );
             buttonElement.textContent = "Bundle & Save";
 
             cardElement.appendChild(titleElement);
             cardElement.appendChild(buttonElement);
         } else {
             const titleElement = document.createElement("h2");
-            titleElement.className = "home-card-secondary-title";
+            titleElement.classList.add("home-card-secondary-title");
             titleElement.textContent = cardData.title;
 
             cardElement.appendChild(titleElement);
@@ -53,34 +59,34 @@ function createCards(data) {
 
 function createContentCard(item) {
     const card = document.createElement("div");
-    card.className = "content-card";
+    card.classList.add("content-card");
     card.dataset.articleId = item.id || "";
 
     const preview = document.createElement("div");
-    preview.className = "content-card-preview";
+    preview.classList.add("content-card-preview");
     const img = document.createElement("img");
-    img.className = "content-card-image";
+    img.classList.add("content-card-image");
     img.src = item.imgSrc || "";
     img.alt = "";
     preview.appendChild(img);
 
     const contentContainer = document.createElement("div");
-    contentContainer.className = "content-container";
+    contentContainer.classList.add("content-container");
 
     const title = document.createElement("a");
-    title.className = "content-card-title";
+    title.classList.add("content-card-title");
     title.href = "/hw2/public/articles/" + item.id;
     title.textContent = item.title || "Article Title Placeholder";
     contentContainer.appendChild(title);
 
     const meta = document.createElement("div");
-    meta.className = "content-card-meta";
+    meta.classList.add("content-card-meta");
     const dateSpan = document.createElement("span");
-    dateSpan.className = "article-publish-date";
+    dateSpan.classList.add("article-publish-date");
     dateSpan.textContent = item.publishDate || "3 days ago";
     const byText = document.createTextNode(" by ");
     const authorSpan = document.createElement("span");
-    authorSpan.className = "article-author";
+    authorSpan.classList.add("article-author");
     authorSpan.textContent = item.author || "Utente";
     meta.appendChild(dateSpan);
     meta.appendChild(byText);
@@ -88,28 +94,28 @@ function createContentCard(item) {
     contentContainer.appendChild(meta);
 
     const descriptionDiv = document.createElement("div");
-    descriptionDiv.className = "content-description";
+    descriptionDiv.classList.add("content-description");
     descriptionDiv.textContent =
         item.description ||
         "Lorem ipsum dolor sit amet consectetur adipisicing elit.";
     contentContainer.appendChild(descriptionDiv);
 
     const readMore = document.createElement("a");
-    readMore.className = "content-more";
+    readMore.classList.add("content-more");
     readMore.href = title.href = "/hw2/public/articles/" + item.id;
     readMore.textContent = "Read More";
     contentContainer.appendChild(readMore);
 
     const likesContainer = document.createElement("div");
-    likesContainer.className = "content-card-likes";
+    likesContainer.classList.add("content-card-likes");
     const likes = document.createElement("div");
-    likes.className = "article-likes";
+    likes.classList.add("article-likes");
     likes.textContent = ` ${item.likes_count || 0}`;
     likes.setAttribute("data-article-id", item.id);
     likesContainer.appendChild(likes);
 
     const likesIcon = document.createElement("img");
-    likesIcon.className = "article-likes-icon";
+    likesIcon.classList.add("article-likes-icon");
     likesIcon.src = "/hw2/public/assets/icons/heart_empty.svg";
     likesIcon.setAttribute("data-article-id", item.id);
 
@@ -166,24 +172,24 @@ function onJsonArticles(data) {
             homeBody.innerHTML = "";
 
             const articleDiv = document.createElement("div");
-            articleDiv.className = "home-body-article";
+            articleDiv.classList.add("home-body-article");
 
             const titleA = document.createElement("a");
-            titleA.className = "article-title";
+            titleA.classList.add("article-title");
             titleA.href = "/hw2/public/articles/" + articles[0].id;
             titleA.textContent = articles[0].title || "";
 
             const extrasDiv = document.createElement("div");
-            extrasDiv.className = "home-body-article-extras";
+            extrasDiv.classList.add("home-body-article-extras");
 
             const dateSpan = document.createElement("span");
-            dateSpan.className = "article-publish-date";
+            dateSpan.classList.add("article-publish-date");
             dateSpan.textContent = articles[0].publishDate || "";
 
             const byText = document.createTextNode(" by ");
 
             const authorSpan = document.createElement("span");
-            authorSpan.className = "article-author";
+            authorSpan.classList.add("article-author");
             authorSpan.textContent = articles[0].author || "";
 
             extrasDiv.appendChild(dateSpan);
@@ -191,11 +197,11 @@ function onJsonArticles(data) {
             extrasDiv.appendChild(authorSpan);
 
             const descDiv = document.createElement("div");
-            descDiv.className = "article-description";
+            descDiv.classList.add("article-description");
             descDiv.textContent = articles[0].description || "";
 
             const moreA = document.createElement("a");
-            moreA.className = "article-more";
+            moreA.classList.add("article-more");
             moreA.href = "/hw2/public/articles/" + articles[0].id;
             moreA.textContent = "read more";
 
@@ -205,15 +211,15 @@ function onJsonArticles(data) {
             articleDiv.appendChild(moreA);
 
             const likesContainer = document.createElement("div");
-            likesContainer.className = "content-card-likes";
+            likesContainer.classList.add("content-card-likes");
             const likes = document.createElement("div");
-            likes.className = "article-likes";
+            likes.classList.add("article-likes");
             likes.textContent = articles[0].likes_count || 0;
             likes.setAttribute("data-article-id", articles[0].id);
             likesContainer.appendChild(likes);
 
             const likesIcon = document.createElement("img");
-            likesIcon.className = "article-likes-icon";
+            likesIcon.classList.add("article-likes-icon");
             likesIcon.src = "/hw2/public/assets/icons/heart_empty.svg";
             likesIcon.setAttribute("data-article-id", articles[0].id);
 
@@ -236,12 +242,12 @@ function onJsonArticles(data) {
             articleDiv.appendChild(likesContainer);
 
             const imageDiv = document.createElement("div");
-            imageDiv.className = "home-body-image";
+            imageDiv.classList.add("home-body-image");
             if (articles[0].imgSrc) {
                 const img = document.createElement("img");
                 img.src = articles[0].imgSrc;
                 img.alt = "";
-                img.className = "home-body-img";
+                img.classList.add("home-body-img");
                 imageDiv.appendChild(img);
             }
 
@@ -254,7 +260,7 @@ function onJsonArticles(data) {
         topContainer.innerHTML = "";
 
         const firstCardsContainer = document.createElement("div");
-        firstCardsContainer.className = "top-cards-container";
+        firstCardsContainer.classList.add("top-cards-container");
 
         for (var i = 1; i < Math.min(3, articles.length); i++) {
             const item = articles[i];

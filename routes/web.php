@@ -8,6 +8,7 @@ Route::get('/', function () {
 
 Route::get('register', [App\Http\Controllers\LoginController::class, 'register_form']);
 Route::post('register', [App\Http\Controllers\LoginController::class, 'do_register']);
+Route::get('check-email/{email}', [App\Http\Controllers\ArticlesController::class, 'check_email']);
 
 Route::get('login', [App\Http\Controllers\LoginController::class, 'login_form']);
 Route::post('login', [App\Http\Controllers\LoginController::class, 'do_login']);

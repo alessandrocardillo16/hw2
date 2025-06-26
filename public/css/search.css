@@ -69,7 +69,6 @@ section {
     color: #222;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
 }
 
 .search-result-author {
@@ -78,7 +77,6 @@ section {
     margin-bottom: 4px;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
 }
 
 @media (min-width: 1024px) {
@@ -99,7 +97,6 @@ section {
         height: 180px;
         min-width: 0;
         max-width: 100%;
-        aspect-ratio: unset;
     }
     .search-result-info {
         padding: 12px 8px 0 8px;

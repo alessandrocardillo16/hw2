@@ -1,52 +1,54 @@
 function onResponse(response) {
-  return response.json();
+    return response.json();
 }
 
 function onJson(data) {
-  const container = document.querySelector("#search-results");
-  container.innerHTML = "";
-  if (data.docs.length === 0) {
-    container.innerHTML = "<p>No results found.</p>";
-    return;
-  }
-  for (let i = 0; i < data.docs.length; i++) {
-    const book = data.docs[i];
-    const bookDiv = document.createElement("div");
-    bookDiv.className = "search-result-item";
-
-    let cover;
-    if (book.cover_i) {
-      cover = document.createElement("img");
-      cover.className = "search-result-cover";
-      cover.src =
-        "https://covers.openlibrary.org/b/id/" + book.cover_i + "-M.jpg";
-      cover.alt = "cover";
-    } else {
-      cover = document.createElement("div");
-      cover.className = "search-result-cover";
+    const container = document.querySelector("#search-results");
+    container.innerHTML = "";
+    if (data.docs.length === 0) {
+        container.innerHTML = "<p>No results found.</p>";
+        return;
     }
-    bookDiv.appendChild(cover);
+    for (let i = 0; i < data.docs.length; i++) {
+        const book = data.docs[i];
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("search-result-item");
 
-    const infoDiv = document.createElement("div");
-    infoDiv.className = "search-result-info";
+        let cover;
+        if (book.cover_i) {
+            cover = document.createElement("img");
+            cover.classList.add("search-result-cover");
+            cover.src =
+                "https://covers.openlibrary.org/b/id/" +
+                book.cover_i +
+                "-M.jpg";
+            cover.alt = "cover";
+        } else {
+            cover = document.createElement("div");
+            cover.classList.add("search-result-cover");
+        }
+        bookDiv.appendChild(cover);
 
-    const titleDiv = document.createElement("div");
-    titleDiv.className = "search-result-title";
-    titleDiv.textContent = book.title;
-    infoDiv.appendChild(titleDiv);
+        const infoDiv = document.createElement("div");
+        infoDiv.classList.add("search-result-info");
 
-    bookDiv.appendChild(infoDiv);
-    container.appendChild(bookDiv);
-  }
+        const titleDiv = document.createElement("div");
+        titleDiv.classList.add("search-result-title");
+        titleDiv.textContent = book.title;
+        infoDiv.appendChild(titleDiv);
+
+        bookDiv.appendChild(infoDiv);
+        container.appendChild(bookDiv);
+    }
 }
 
 const query = document.querySelector(".search-input").value;
 if (!query) {
-  console.log("Please enter a search term.");
+    console.log("Please enter a search term.");
 }
 fetch(
-  "https://openlibrary.org/search.json?author=Wizards+RPG+Team&title=" +
-    encodeURIComponent(query)
+    "https://openlibrary.org/search.json?author=Wizards+RPG+Team&title=" +
+        encodeURIComponent(query)
 )
-  .then(onResponse)
-  .then(onJson);
+    .then(onResponse)
+    .then(onJson);

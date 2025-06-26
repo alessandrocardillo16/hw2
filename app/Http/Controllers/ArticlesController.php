@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Likes;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
@@ -224,6 +225,15 @@ class ArticlesController extends Controller
             'success' => true,
             'liked' => $like ? true : false,
             'authenticated' => true
+        ]);
+    }
+
+    public function check_email(Request $request, $email)
+    {
+        $user = User::where('email', $email)->first();
+        
+        return response()->json([
+            'exists' => $user ? true : false
         ]);
     }
 }
