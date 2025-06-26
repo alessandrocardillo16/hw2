@@ -142,42 +142,6 @@ function onLikeIconClick(event) {
     addLike(articleId);
 }
 
-function formatPublishDate(publishDateString) {
-    const now = new Date();
-    const date = new Date(publishDateString);
-
-    const diffMs = now - date;
-    const diffMinutes = Math.floor(diffMs / (1000 * 60));
-    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-    if (
-        now.getFullYear() === date.getFullYear() &&
-        now.getMonth() === date.getMonth() &&
-        now.getDate() === date.getDate() &&
-        now.getHours() === date.getHours()
-    ) {
-        return diffMinutes === 1 ? "1 minuto fa" : `${diffMinutes} minuti fa`;
-    }
-
-    if (
-        now.getFullYear() === date.getFullYear() &&
-        now.getMonth() === date.getMonth() &&
-        now.getDate() === date.getDate()
-    ) {
-        return diffHours === 1 ? "1 ora fa" : `${diffHours} ore fa`;
-    }
-
-    if (diffDays < 7) {
-        return diffDays === 1 ? "1 giorno fa" : `${diffDays} giorni fa`;
-    }
-
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-}
-
 let articlesOffset = 0;
 const articlesLimit = 8;
 
