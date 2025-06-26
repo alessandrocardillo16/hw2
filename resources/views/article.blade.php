@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="D&D Beyond is a digital toolset and game companion for Dungeons & Dragons tabletop roleplaying game.">
-    <link rel="icon" href="/hw1/icons/favicon.png" type="image/png">
+    <link rel="icon" type="image/png" href="/hw2/public/assets/icons/favicon.png">
 
     <link rel="stylesheet" href="{{ url('css/header-footer.css') }}">
     <link rel="stylesheet" href="{{ url('css/article.css') }}">
@@ -18,8 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
     
     <script src="/hw2/public/js/header.js" defer></script>
-    <script src="/hw1/APIs/openLibrary.js" defer></script>
-    <script src="/hw1/APIs/ipGeolocation.js" defer></script>
+    <script src="{{ url('js/openLibrary.js') }}" defer></script>
+    <script src="{{ url('js/ipGeolocation.js') }}" defer></script>
 </head>
 <body>
     @include('partials/header')

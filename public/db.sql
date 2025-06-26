@@ -11,7 +11,7 @@ CREATE TABLE users (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-)
+);
 
 CREATE TABLE articles (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
