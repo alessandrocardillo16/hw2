@@ -24,14 +24,7 @@ class IpGeolocationController extends Controller
 
         $response = curl_exec($curl);
 
-        if (curl_errno($curl)) {
-            return response()->json([
-                "error" => "Errore nella richiesta cURL: " . curl_error($curl)
-            ], 500);
-        } else {
-            return response($response, 200)
-                ->header('Content-Type', 'application/json');
-        }
+        return $response;
 
         curl_close($curl);
     }

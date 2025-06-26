@@ -155,7 +155,6 @@ class ArticlesController extends Controller
             ->first();
 
         if ($like) {
-            // Unlike
             $like->delete();
 
             $likes_count = \App\Models\Article::where('id', $article_id)
@@ -169,7 +168,6 @@ class ArticlesController extends Controller
                 'likes_count' => $likes_count
             ]);
         } else {
-            // Like
             $inserted = Likes::create([
                 'user_id' => $user,
                 'article_id' => $article_id
