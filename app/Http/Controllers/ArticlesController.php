@@ -49,22 +49,24 @@ class ArticlesController extends Controller
     public function get_articles(Request $request, $offset = 0, $limit = 8)
     {
         
-        $articles = Article::with(['authorUser:id,name,surname'])
+        $articlesQuery = Article::with(['authorUser:id,name,surname'])
             ->orderByDesc('publishDate')
             ->offset($offset)
             ->limit($limit)
-            ->get()
-            ->map(function ($article) {
-                return [
-                    'id' => $article->id,
-                    'title' => $article->title,
-                    'publishDate' => $this->formatPublishDate($article->publishDate),
-                    'author' => $article->authorUser->name . ' ' . $article->authorUser->surname,
-                    'description' => $article->description,
-                    'imgSrc' => $article->imgSrc,
-                    'likes_count' => $article->likes_count ?? 0,
-                ];
-            });
+            ->get();
+
+        $articles = [];
+        foreach ($articlesQuery as $article) {
+            $articles[] = [
+                'id' => $article->id,
+                'title' => $article->title,
+                'publishDate' => $this->formatPublishDate($article->publishDate),
+                'author' => $article->authorUser->name . ' ' . $article->authorUser->surname,
+                'description' => $article->description,
+                'imgSrc' => $article->imgSrc,
+                'likes_count' => $article->likes_count ?? 0,
+            ];
+        }
 
         return response()->json(['articles' => $articles]);
     }
@@ -76,23 +78,25 @@ class ArticlesController extends Controller
             return response()->json(['error' => 'Unauthorized access'], 401);
         }
 
-           $articles = Article::with(['authorUser:id,name,surname'])
+        $articlesQuery = Article::with(['authorUser:id,name,surname'])
             ->where('author', $user_id)
             ->orderByDesc('publishDate')
             ->offset($offset)
             ->limit($limit)
-            ->get()
-            ->map(function ($article) {
-                return [
-                    'id' => $article->id,
-                    'title' => $article->title,
-                    'publishDate' => $this->formatPublishDate($article->publishDate),
-                    'author' => $article->authorUser->name . ' ' . $article->authorUser->surname,
-                    'description' => $article->description,
-                    'imgSrc' => $article->imgSrc,
-                    'likes_count' => $article->likes_count ?? 0,
-                ];
-            });
+            ->get();
+
+        $articles = [];
+        foreach ($articlesQuery as $article) {
+            $articles[] = [
+                'id' => $article->id,
+                'title' => $article->title,
+                'publishDate' => $this->formatPublishDate($article->publishDate),
+                'author' => $article->authorUser->name . ' ' . $article->authorUser->surname,
+                'description' => $article->description,
+                'imgSrc' => $article->imgSrc,
+                'likes_count' => $article->likes_count ?? 0,
+            ];
+        }
 
         return response()->json([
             'articles' => $articles]);
