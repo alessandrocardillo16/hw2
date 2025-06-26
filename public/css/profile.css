@@ -1,0 +1,59 @@
+section {
+    margin-top: 64px;
+    min-height: 65vh;
+}
+
+.search-form {
+    margin-bottom: 0;
+}
+
+.info {
+    display: flex;
+    text-align: center;
+    padding: 20px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.username {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    margin: 0 20px 0 30px;
+    text-transform: capitalize;
+}
+.content-card-container {
+    margin-bottom: 40px;
+}
+
+@media (max-width: 1024px) {
+    .content-card {
+        width: 45%;
+    }
+    .see-all {
+        width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-card {
+        width: 100%;
+        margin: 5px 0;
+    }
+    .content-card .content-card-preview {
+        height: 130px;
+    }
+    .top-content-card {
+        width: 100%;
+    }
+    .content-description {
+        display: none;
+    }
+    .content-more {
+        display: none;
+    }
+}
