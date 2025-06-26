@@ -161,28 +161,28 @@ function onJsonArticles(data) {
     var topContainer = document.querySelector(".content-card-container");
 
     if (articles.length > 0 && !appendGlobal) {
-        var homeBody = document.querySelector(".home-body.container");
+        const homeBody = document.querySelector(".home-body.container");
         if (homeBody) {
             homeBody.innerHTML = "";
 
-            var articleDiv = document.createElement("div");
+            const articleDiv = document.createElement("div");
             articleDiv.className = "home-body-article";
 
-            var titleA = document.createElement("a");
+            const titleA = document.createElement("a");
             titleA.className = "article-title";
             titleA.href = "/hw2/public/articles/" + articles[0].id;
             titleA.textContent = articles[0].title || "";
 
-            var extrasDiv = document.createElement("div");
+            const extrasDiv = document.createElement("div");
             extrasDiv.className = "home-body-article-extras";
 
-            var dateSpan = document.createElement("span");
+            const dateSpan = document.createElement("span");
             dateSpan.className = "article-publish-date";
             dateSpan.textContent = articles[0].publishDate || "";
 
-            var byText = document.createTextNode(" by ");
+            const byText = document.createTextNode(" by ");
 
-            var authorSpan = document.createElement("span");
+            const authorSpan = document.createElement("span");
             authorSpan.className = "article-author";
             authorSpan.textContent = articles[0].author || "";
 
@@ -190,11 +190,11 @@ function onJsonArticles(data) {
             extrasDiv.appendChild(byText);
             extrasDiv.appendChild(authorSpan);
 
-            var descDiv = document.createElement("div");
+            const descDiv = document.createElement("div");
             descDiv.className = "article-description";
             descDiv.textContent = articles[0].description || "";
 
-            var moreA = document.createElement("a");
+            const moreA = document.createElement("a");
             moreA.className = "article-more";
             moreA.href = "/hw2/public/articles/" + articles[0].id;
             moreA.textContent = "read more";
@@ -204,15 +204,15 @@ function onJsonArticles(data) {
             articleDiv.appendChild(descDiv);
             articleDiv.appendChild(moreA);
 
-            var likesContainer = document.createElement("div");
+            const likesContainer = document.createElement("div");
             likesContainer.className = "content-card-likes";
-            var likes = document.createElement("div");
+            const likes = document.createElement("div");
             likes.className = "article-likes";
             likes.textContent = articles[0].likes_count || 0;
             likes.setAttribute("data-article-id", articles[0].id);
             likesContainer.appendChild(likes);
 
-            var likesIcon = document.createElement("img");
+            const likesIcon = document.createElement("img");
             likesIcon.className = "article-likes-icon";
             likesIcon.src = "/hw2/public/assets/icons/heart_empty.svg";
             likesIcon.setAttribute("data-article-id", articles[0].id);
@@ -235,10 +235,10 @@ function onJsonArticles(data) {
             likesContainer.appendChild(likesIcon);
             articleDiv.appendChild(likesContainer);
 
-            var imageDiv = document.createElement("div");
+            const imageDiv = document.createElement("div");
             imageDiv.className = "home-body-image";
             if (articles[0].imgSrc) {
-                var img = document.createElement("img");
+                const img = document.createElement("img");
                 img.src = articles[0].imgSrc;
                 img.alt = "";
                 img.className = "home-body-img";
@@ -253,26 +253,26 @@ function onJsonArticles(data) {
     if (!appendGlobal) {
         topContainer.innerHTML = "";
 
-        var firstCardsContainer = document.createElement("div");
+        const firstCardsContainer = document.createElement("div");
         firstCardsContainer.className = "top-cards-container";
 
         for (var i = 1; i < Math.min(3, articles.length); i++) {
-            var item = articles[i];
-            var newCard = createContentCard(item);
+            const item = articles[i];
+            const newCard = createContentCard(item);
             firstCardsContainer.appendChild(newCard);
         }
 
         topContainer.appendChild(firstCardsContainer);
 
         for (var i = 3; i < articles.length; i++) {
-            var item = articles[i];
-            var newCard = createContentCard(item);
+            const item = articles[i];
+            const newCard = createContentCard(item);
             topContainer.appendChild(newCard);
         }
     } else {
         for (var i = 0; i < articles.length; i++) {
-            var item = articles[i];
-            var newCard = createContentCard(item);
+            const item = articles[i];
+            const newCard = createContentCard(item);
             if (topContainer) {
                 topContainer.appendChild(newCard);
             }
